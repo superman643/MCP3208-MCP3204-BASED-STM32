@@ -4,18 +4,18 @@
 void MCP_PORTInit()
 {
  GPIO_InitTypeDef  GPIO_InitStructure;
- RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);	 //Ê¹ÄÜPB¶Ë¿ÚÊ±ÖÓ
+ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);	 //ä½¿èƒ½PBç«¯å£æ—¶é’Ÿ
 	
- GPIO_InitStructure.GPIO_Pin = MCP_CS|MCP_CLK|MCP_DOUT;
- GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 		 //ÍÆÍìÊä³ö
- GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;		 //IO¿ÚËÙ¶ÈÎª50MHz
- GPIO_Init(GPIOA, &GPIO_InitStructure);					 //¸ù¾İÉè¶¨²ÎÊı³õÊ¼»¯
- GPIO_SetBits(MCP_PORT,MCP_CS|MCP_CLK|MCP_DOUT);	 //output high
+ GPIO_InitStructure.GPIO_Pin = MCP_CS|MCP_CLK|MCP_DIN;
+ GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 		 //æ¨æŒ½è¾“å‡º
+ GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;		 //IOå£é€Ÿåº¦ä¸º50MHz
+ GPIO_Init(GPIOA, &GPIO_InitStructure);					 //æ ¹æ®è®¾å®šå‚æ•°åˆå§‹åŒ–
+ GPIO_SetBits(MCP_PORT,MCP_CS|MCP_CLK|MCP_DIN);	 //output high
 
- GPIO_InitStructure.GPIO_Pin = MCP_DIN;
+ GPIO_InitStructure.GPIO_Pin = MCP_DOUT;
  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING; 		 //float input
- GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;		 //IO¿ÚËÙ¶ÈÎª50MHz
- GPIO_Init(MCP_PORT, &GPIO_InitStructure);					 //¸ù¾İÉè¶¨²ÎÊı³õÊ¼»¯
+ GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;		 //IOå£é€Ÿåº¦ä¸º50MHz
+ GPIO_Init(MCP_PORT, &GPIO_InitStructure);					 //æ ¹æ®è®¾å®šå‚æ•°åˆå§‹åŒ–
 }
 
 float MCP3208_getAD(u8 channel)
